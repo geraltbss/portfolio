@@ -1,3 +1,6 @@
+import Image from "next/image";
+import { getBasePath } from "@/lib/site";
+
 type Project = {
   number: string;
   title: string;
@@ -45,7 +48,7 @@ const projects: Project[] = [
     number: "04",
     title: "Tracking change over time.",
     description:
-      "A transcriptomics study of gene and pathway changes from L4 larvae to two-day-old adults, with a focus on CUG-repeat-associated effects.",
+      "A transcriptomics study of gene and pathway changes from L4 larvae to two-day-old adults of C.Elegans, with a focus on CUG-repeat-associated effects.",
     category: "BIOINFORMATICS · GENE EXPRESSION",
     tags: ["Transcriptomics", "Pathways", "Data analysis"],
     href: "https://github.com/onlau/dsp2026",
@@ -177,11 +180,16 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export default function Home() {
+  const basePath = getBasePath();
+
   return (
     <main>
       <div className="page-shell">
         <header className="site-header">
-          <a className="wordmark" href="#top" aria-label="Buddhima Senarathna home"><span>b</span>s.</a>
+          <a className="brand-link" href="#top" aria-label="Buddhima Senarathna home">
+            <span className="brand-name">Buddhima Senarathna</span>
+            <span className="brand-role">DATA SCIENTIST</span>
+          </a>
           <nav aria-label="Main navigation">
             <a href="#projects">Projects</a>
             <a href="#about">About</a>
@@ -193,22 +201,25 @@ export default function Home() {
 
         <section className="hero" id="top">
           <div className="hero-copy">
-            <div className="eyebrow"><span className="status-dot" /> BUDDHIMA SENARATHNA · DATA · AI</div>
+            <div className="eyebrow"><span className="status-dot" /> DATA · AI · NLP</div>
             <h1>I make<br /><span className="headline-accent">data</span> useful<span className="headline-period">.</span></h1>
             <div className="hero-bottom">
               <p>I build practical tools where data, AI and clear product thinking meet.</p>
               <a className="pill-link" href="#projects">Explore my work <Arrow /></a>
             </div>
           </div>
-          <div className="hero-art" aria-label="A playful abstract data visualization">
-            <div className="art-grid" />
-            <div className="art-orbit art-orbit-one" />
-            <div className="art-orbit art-orbit-two" />
-            <div className="art-star">✳</div>
-            <div className="art-label label-one">THINK<br />IN SYSTEMS</div>
-            <div className="art-label label-two">MAKE<br />IT MATTER</div>
-            <div className="art-vertical">A LITTLE LOGIC. A LOT OF CURIOSITY.</div>
-            <span className="art-index">BS - 2026</span>
+          <div className="hero-portrait">
+            <div className="portrait-grid" aria-hidden="true" />
+            <Image
+              className="portrait-image"
+              src={`${basePath}/buddhima-senarathna.png`}
+              alt="Buddhima Senarathna"
+              fill
+              priority
+              sizes="(max-width: 640px) 82vw, (max-width: 900px) 42vw, 440px"
+            />
+            <span className="portrait-label"><span className="status-dot" /></span>
+            <span className="portrait-index"></span>
           </div>
           <div className="hero-footnote"><span>DATA TOOLS & EXPERIMENTS</span><span>SCROLL TO EXPLORE ↓</span></div>
         </section>

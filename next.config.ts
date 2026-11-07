@@ -1,18 +1,13 @@
 import type { NextConfig } from "next";
-
-const [repositoryOwner, repositoryName] =
-  process.env.GITHUB_REPOSITORY?.split("/") ?? [];
-const basePath =
-  process.env.GITHUB_PAGES === "true" &&
-  repositoryName &&
-  repositoryName.toLowerCase() !== `${repositoryOwner?.toLowerCase()}.github.io`
-    ? `/${repositoryName}`
-    : "";
+import { getBasePath } from "./src/lib/site";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath,
+  basePath: getBasePath(),
   trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
   turbopack: {
     rules: {
       "*.css": {
