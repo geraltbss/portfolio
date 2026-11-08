@@ -51,7 +51,7 @@ const projects: Project[] = [
       "A transcriptomics study of gene and pathway changes from L4 larvae to two-day-old adults of C.Elegans, with a focus on CUG-repeat-associated effects.",
     category: "BIOINFORMATICS · GENE EXPRESSION",
     tags: ["Transcriptomics", "Pathways", "Data analysis"],
-    href: "https://github.com/onlau/dsp2026",
+    href: "https://github.com/geraltbss/Transcriptomic-analysis-of-CUG-reapeat-RNAs",
     visual: "genomics",
   },
   {
